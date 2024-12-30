@@ -38,7 +38,8 @@ msbuild.wrn
 .vs/
 
 #Keep out secret information out of repo
-*/appsettings.*
+*/appsettings.json
+*/appsettings.Development.json
 */firebase-service-account.json
 */cert/
 */__MACOSX/
