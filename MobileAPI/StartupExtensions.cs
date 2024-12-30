@@ -1,5 +1,6 @@
 ﻿using Domain.Services;
 using Infrastructure.Services;
+using Microsoft.OpenApi.Models;
 using MobileAPI.Models.Common;
 
 namespace MobileAPI;
@@ -24,6 +25,16 @@ internal static class StartupExtensions
 		app.Services.AddSingleton(ReadAppSettings(app.Configuration));
 		app.Services.AddScoped<IWeatherService, WeatherService>();
 		return app.Services;
+	}
+
+	public static IServiceCollection ConfigureSwagger(this IServiceCollection services)
+	{
+		services.AddSwaggerGen(options =>
+		{
+			options.SwaggerDoc("v1", new OpenApiInfo { Title = "Weather Mobile API", Version = "v1" });
+		});
+		
+		return services;
 	}
 
 	private static AppSettings ReadAppSettings(IConfiguration configuration)
