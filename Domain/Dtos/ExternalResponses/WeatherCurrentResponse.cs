@@ -7,4 +7,5 @@ public class WeatherCurrentResponse
 	public float WindKph { get; set; }
 	public float PrecipIn { get; set; }
 	public DayOfWeek IsDay { get; set; }
+	public float Humidity { get; set; }
 }

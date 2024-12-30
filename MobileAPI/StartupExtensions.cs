@@ -1,7 +1,8 @@
 ﻿using Domain.Services;
 using Infrastructure.Services;
 using Microsoft.OpenApi.Models;
-using MobileAPI.Models.Common;
+using Domain.Models.Common;
+using Infrastructure.Clients;
 
 namespace MobileAPI;
 
@@ -22,6 +23,7 @@ internal static class StartupExtensions
 	
 	public static IServiceCollection Configure(this WebApplicationBuilder app)
 	{
+		app.Services.AddScoped<ExtHttpClient>();
 		app.Services.AddSingleton(ReadAppSettings(app.Configuration));
 		app.Services.AddScoped<IWeatherService, WeatherService>();
 		return app.Services;

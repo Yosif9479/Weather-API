@@ -13,6 +13,6 @@ public class WeatherController(IWeatherService service) : Controller
 	[HttpGet("current/{city}")]
 	public async Task<ActionResult<WeatherCurrentResponse>> GetCurrentWeather(string city)
 	{
-		return await service.GetCurrentWeatherAsync();
+		return await service.GetCurrentWeatherAsync(city);
 	}
 }
